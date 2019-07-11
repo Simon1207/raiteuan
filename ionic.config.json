@@ -1,0 +1,7 @@
+{
+  "name": "raiteuan",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

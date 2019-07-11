@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      RaiteUAN - Ingresar usuario
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <img src="../../assets/ruan.png">
+  <form [formGroup]="loginForm">
+      <ion-item>
+        <ion-input formControlName="usuario" type="text" placeholder="USUARIO"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input formControlName="contraseña" type="password" placeholder="CONTRASEÑA"></ion-input>
+      </ion-item>
+      <ion-button (click)="logIn()" [disabled]="!loginForm.valid" shape="round" size="default" color="primary" expand="block">Login</ion-button>
+      <hr>
+    </form> 
+
+    <ion-button expand="block" color="secondary" shape="round" [routerLink]="['/registro']">Registrarse</ion-button>
+
+   
+    
+</ion-content>

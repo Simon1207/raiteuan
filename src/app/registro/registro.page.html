@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registrar Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-item><ion-label>¿Que tipo de usuario desea ser?</ion-label></ion-item>
+
+
+    <ion-item>
+        <ion-label>Tipo de usuario</ion-label>
+        <ion-select placeholder="Seleccione" (ionChange)="obtenerValor($event)">
+            <ion-select-option value="e">Estudiante</ion-select-option>
+            <ion-select-option value="c">Conductor</ion-select-option>
+          </ion-select>
+      </ion-item>
+
+      <div *ngIf="bandera=='e'">
+        <ion-label>Registro de Estudiante</ion-label>
+        <form [formGroup]="formRegistro">
+          <ion-item>
+            <ion-input formControlName="nombre" type="text" placeholder="Nombre"></ion-input>
+             <div class="error-messages">
+                <ng-container *ngFor="let error of errorMessages.nombre">
+                  <div class="error-message" *ngIf="formRegistro.get('nombre').hasError(error.type) && (formRegistro.get('nombre').dirty || formRegistro.get('nombre').touched)">
+                    {{error.message}}
+                  </div>
+                </ng-container>
+            </div>
+          </ion-item>
+          <ion-item>
+            <ion-input formControlName="apellidos" type="text" placeholder="Apellidos"></ion-input>
+            <div class="error-messages">
+              <ng-container *ngFor="let error of errorMessages.apellidos">
+                <div class="error-message" *ngIf="formRegistro.get('apellidos').hasError(error.type) && (formRegistro.get('apellidos').dirty || formRegistro.get('apellidos').touched)">
+                  {{error.message}}
+                </div>
+              </ng-container>
+          </div>
+          </ion-item>
+          <ion-item>
+            <ion-input formControlName="matricula" type="text" placeholder="Matricula"></ion-input>
+            <div class="error-messages">
+              <ng-container *ngFor="let error of errorMessages.matricula">
+                <div class="error-message" *ngIf="formRegistro.get('matricula').hasError(error.type) && (formRegistro.get('matricula').dirty || formRegistro.get('matricula').touched)">
+                  {{error.message}}
+                </div>
+              </ng-container>
+              </div>
+          </ion-item>
+          <ion-item>
+            <ion-input formControlName="usuario" type="text" placeholder="Nombre de Usuario"></ion-input>
+            <div class="error-messages">
+              <ng-container *ngFor="let error of errorMessages.usuario">
+                <div class="error-message" *ngIf="formRegistro.get('usuario').hasError(error.type) && (formRegistro.get('usuario').dirty || formRegistro.get('usuario').touched)">
+                  {{error.message}}
+                </div>
+              </ng-container>
+              </div>
+          </ion-item>
+          <ion-item>
+            <ion-input formControlName="contraseña" type="password" placeholder="Contraseña"></ion-input>
+          </ion-item>
+          <ion-button [routerLink]='["/home"]' (click)="registrar()" [disabled]="!formRegistro.valid" shape="round" size="default" color="primary" expand="block">Registrar</ion-button>
+    
+        </form> 
+       
+      </div>
+
+      <div *ngIf="bandera=='c'">
+        <ion-label>Registro de Conductor</ion-label>
+        <form [formGroup]="formRegistro">
+          <ion-item>
+            <ion-input formControlName="nombre" type="text" placeholder="Nombre"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input formControlName="apellidos" type="text" placeholder="Apellidos"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input formControlName="matricula" type="text" placeholder="Numero de Licencia"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input formControlName="usuario" type="text" placeholder="Nombre de Usuario"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input formControlName="contraseña" type="password" placeholder="Contraseña"></ion-input>
+          </ion-item>
+          <ion-button [routerLink]='["/home"]' (click)="registrar()" [disabled]="!formRegistro.valid" shape="round" size="default" color="primary" expand="block">Registrar</ion-button>
+    
+        </form> 
+       
+      </div>
+
+      
+
+</ion-content>
